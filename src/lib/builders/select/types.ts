@@ -143,6 +143,12 @@ export type CreateSelectProps<
 	onSelectedChange?: ChangeFn<S | undefined>;
 
 	multiple?: Multiple;
+
+	/**
+	 * Whether to use typeahead to automatically focus elements.
+	 * @default true
+	 */
+	typeahead?: boolean;
 };
 
 export type SelectOptionProps<Value = unknown> = SelectOption<Value> & {

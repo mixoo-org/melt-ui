@@ -69,6 +69,7 @@ const defaults = {
 	portal: undefined,
 	closeOnEscape: true,
 	closeOnOutsideClick: true,
+	typeahead: true,
 } satisfies CreateSelectProps;
 
 type SelectParts =
@@ -117,6 +118,7 @@ export function createSelect<
 		closeOnEscape,
 		closeOnOutsideClick,
 		multiple,
+		typeahead,
 	} = options;
 
 	const openWritable = withDefaults.open ?? writable(false);
@@ -361,7 +363,7 @@ export function createSelect<
 						handleMenuNavigation(e);
 					}
 
-					if (!isModifierKey && isCharacterKey) {
+					if (!isModifierKey && isCharacterKey && get(typeahead) === true) {
 						handleTypeaheadSearch(e.key, getOptions(node));
 					}
 				})
